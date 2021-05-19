@@ -18,7 +18,6 @@ const makeDefaultManager = ({
 
 test('successfully bump version', () => {
     const manager = makeDefaultManager().dryRun()
-
     expect(manager.buildGradle.content).toMatchSnapshot()
 })
 
