@@ -115,7 +115,6 @@ class PBXManager extends BaseFileManager {
 class BuildGradleManager extends BaseFileManager {
     bumpCode() {
         const currentFile = this.read()!
-        console.log(currentFile)
         const codeExp = /versionCode = (\d+)/
 
         const versionMatch = matchFirst(codeExp, currentFile)
