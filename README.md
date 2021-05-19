@@ -10,6 +10,31 @@ A **simple** react-native cli plugin to bump versions at platform files
 
 ## Usage
 
+At `android/build.gradle` add `versionCode` and `versionName`
+```
+...
+buildscript {
+    ext {
+        ...
+        versionCode = 104
+        versionName = "0.0.104"
+        ...
+    }
+...
+``` 
+
+Change `versionCode` and `versionName` at `android/app/build.gradle` to
+```
+...
+defaultConfig {
+    ...
+    targetSdkVersion rootProject.ext.targetSdkVersion
+    versionCode rootProject.ext.versionCode
+    ...
+}
+...
+```
+
 Since this is a react-native cli plugin, after adding it to the project
 you can call:
 

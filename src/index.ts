@@ -115,7 +115,7 @@ class PBXManager extends BaseFileManager {
 class BuildGradleManager extends BaseFileManager {
     bumpCode() {
         const currentFile = this.read()!
-        const codeExp = /versionCode (\d+)/
+        const codeExp = /versionCode = (\d+)/
 
         const versionMatch = matchFirst(codeExp, currentFile)
         const current = parseDecimal(versionMatch)
@@ -125,7 +125,7 @@ class BuildGradleManager extends BaseFileManager {
             throw new Error(`Invalid versionCode version parsed (${ versionMatch })`)
         }
 
-        this.content = currentFile.replace(codeExp, `versionCode ${ next }`)
+        this.content = currentFile.replace(codeExp, `versionCode = ${ next }`)
 
         return { current, next }
     }
@@ -133,7 +133,7 @@ class BuildGradleManager extends BaseFileManager {
     setVersionName(next: string) {
         const currentFile = this.read()!
         const quotes = /[^"']+/
-        const nameExp = /versionName ('.*'|".*")/
+        const nameExp = /versionName = ('.*'|".*")/
 
         const current = matchFirst(nameExp, currentFile)
         const newVersionName = current.replace(quotes, next)
@@ -142,7 +142,7 @@ class BuildGradleManager extends BaseFileManager {
           nameExp,
           // Here we try to prevent quotes style...
           // which may be unnecessary, but who knows?
-          `versionName ${newVersionName}`
+          `versionName = ${newVersionName}`
         )
 
         return { current, next }
