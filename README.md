@@ -1,4 +1,6 @@
-# react-native-cli-bump-version
+# react-native-cli-bump-version2
+
+Forked from [github.com/Grohden/react-native-cli-bump-version](https://github.com/Grohden/react-native-cli-bump-version)
 
 A **simple** react-native cli plugin to bump versions at platform files
 
